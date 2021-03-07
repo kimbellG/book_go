@@ -1,2 +1,6 @@
 *.exe
 *.html
+*.a
+.vimrc
+.log
+*.jpeg

@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
+
+	"../package/svggrath"
 )
 
 var mu sync.Mutex
@@ -17,6 +19,7 @@ func main() {
 	http.HandleFunc("/plcount", plusCounter)
 	http.HandleFunc("/debug", debug)
 	http.HandleFunc("/gif", gifHandler)
+	http.HandleFunc("/grafsvg", graf)
 
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }
@@ -78,4 +81,24 @@ func gifHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	Lissajous(w, p)
+}
+
+func graf(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		log.Print(err)
+	}
+
+	for k, _ := range r.Form {
+		if k == "heigth" {
+			n, err := strconv.Atoi(r.FormValue(k))
+			if err != nil {
+				log.Print(err)
+			}
+			svggrath.Parametrs.Height = n
+			fmt.Printf("Height = %d\n", n)
+		}
+	}
+
+	w.Header().Set("Content-Type", "image/svg+xml")
+	svggrath.Draw(w)
 }
