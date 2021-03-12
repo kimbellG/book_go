@@ -9,11 +9,11 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "${workspaceFolder}\\src\\httpserv.go",
-            "cwd": "${workspaceFolder}\\src",
-            "args": ["${workspaceFolder}\\src\\mygf\\mygf.go"],
+            "program": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}",
+            "args": [],
             //"envFile" : "${workspaceFolder}\\src\\mygf\\mygf.go",
-            "output": "bin/server.exe"
+            "output": "bin/reverse_urf8.exe"
         }
     ]
 }
