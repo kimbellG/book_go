@@ -8,9 +8,8 @@ func init() {
 	}
 }
 
-//PopCount возвращает количество единичных битов
-//в 64-х битном числе
-func PopCount(x uint64) int {
+//Classic возвращает количество единичных битов в 64-х битном числе
+func Classic(x uint64) int {
 	return int(pc[byte(x>>(0*8))] +
 		pc[byte(x>>(1*8))] +
 		pc[byte(x>>(2*8))] +
@@ -21,7 +20,24 @@ func PopCount(x uint64) int {
 		pc[byte(x>>(7*8))])
 }
 
-func PopCountLoop(n uint64) int {
+//ByteSlice возвращает количество единичных битов
+//для массива байт
+func ByteSlice(array [32]byte) int {
+	var countBitOne int
+
+	for _, oneByte := range array {
+		countBitOne += int(pc[oneByte])
+	}
+
+	return countBitOne
+}
+
+func ForByte(n byte) int {
+	return int(pc[n])
+}
+
+//Loop подсчет единичных битов через цикл
+func Loop(n uint64) int {
 	counter := 0
 
 	for i := 0; i < 8; i++ {
@@ -31,7 +47,8 @@ func PopCountLoop(n uint64) int {
 	return counter
 }
 
-func PopCountSwap(n uint64) int {
+//Swap подсчет единичных битов с помощью метода сдвига числа вправо
+func Swap(n uint64) int {
 	counter := 0
 
 	for i := 0; i < 64; i++ {
@@ -44,7 +61,8 @@ func PopCountSwap(n uint64) int {
 	return counter
 }
 
-func PopCountReset(n uint64) int {
+//Reset метод отброса крайнего бита
+func Reset(n uint64) int {
 	counter := 0
 
 	for ; n != 0; n &= (n - 1) {
