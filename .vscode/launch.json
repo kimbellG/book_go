@@ -9,11 +9,11 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "${workspaceFolder}",
+            "program": "${workspaceFolder}\\src\\html_link_parser.go",
             "cwd": "${workspaceFolder}",
-            "args": [],
+            "args": ["https://pkg.go.dev/golang.org/x/net/html"],
             //"envFile" : "${workspaceFolder}\\src\\mygf\\mygf.go",
-            "output": "bin/reverse_urf8.exe"
+            "output": "bin/reverse_urf8.exe",
         }
     ]
 }

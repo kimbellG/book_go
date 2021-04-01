@@ -14,8 +14,8 @@ func main() {
 	ch := make(chan string)
 
 	for _, url := range os.Args[1:] {
-		if !strings.HasPrefix(url, "http://") {
-			url = "http://" + url
+		if !strings.HasPrefix(url, "https://") {
+			url = "https://" + url
 		}
 
 		go fetch(url, ch)

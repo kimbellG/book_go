@@ -4,3 +4,5 @@
 .vimrc
 .log
 *.jpeg
+*.xml
+*.log
